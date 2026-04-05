@@ -76,7 +76,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                https://vimarsh.iiti.ac.in
+                vimarsh.iiti.ac.in
               </a>
             </li>
             <li className="flex items-center gap-3 hover:text-white transition">
