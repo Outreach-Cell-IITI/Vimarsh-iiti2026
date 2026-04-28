@@ -1,12 +1,23 @@
 [
   {
+  "id": 14,
+  "speaker": "Dr. Soumya Swaminathan, Chairperson, MS Swaminathan Research Foundation, Chennai",
+  "title": "Fragile Futures - How Climate Change is Impacting our Health",
+  "series":"Institute Public Lecture - VIMARSH",
+  "date": "April 28, 2026",
+  "image": "/ForWebpage/28_April.jpeg",
+  "pdf": "/ForWebpage/28_April.jpeg",
+    "video": "https://www.youtube.com/@OutreachCell-iiti",
+  "description": "Dr. Soumya Swaminathan is a globally renowned Indian pediatrician and clinical scientist, recognized for her work in tuberculosis, HIV, and public health leadership. She has held top positions including Chief Scientist at the World Health Organization."
+},
+  {
   "id": 13,
   "speaker": "Prof. S. M. Yusuf, FNASc, FNA, FASc, FNAE, FTWAS, J C Bose National Fellow, Vigyan Shri",
   "title": "Unlocking Room-temperature Quantum Spin Entanglement",
   "series": "Institute Public Lecture - VIMARSH",
   "date": "April 13, 2026",
   "image": "/ForWebpage/poster.png",
-  "pdf": "/ForWebpage/poster.png",
+  "pdf": "/ForWebpage/Yusuf.pdf",
     "video": "https://www.youtube.com/@OutreachCell-iiti"
 },
 {
