@@ -14,7 +14,9 @@ export default function AdminPanel() {
   const [secretInput, setSecretInput] = useState("");
   const [showSecret, setShowSecret] = useState(false);
   const [authorized, setAuthorized] = useState(false);
-  const [checkingAuth, setCheckingAuth] = useState(true);
+  const [checkingAuth, setCheckingAuth] = useState(
+    () => typeof window !== "undefined" && Boolean(sessionStorage.getItem(SECRET_STORAGE_KEY))
+  );
   const [loginError, setLoginError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
 
@@ -42,12 +44,12 @@ export default function AdminPanel() {
   }, []);
 
   // On mount, try to restore a previously verified session.
+  // checkingAuth's initial value already reflects whether there's a stored
+  // secret to verify, so this effect only needs to act when one exists.
   useEffect(() => {
     const stored = typeof window !== "undefined" ? sessionStorage.getItem(SECRET_STORAGE_KEY) : null;
-    if (!stored) {
-      setCheckingAuth(false);
-      return;
-    }
+    if (!stored) return;
+
     verifySecret(stored).then((ok) => {
       if (ok) {
         setSecret(stored);
@@ -106,7 +108,12 @@ export default function AdminPanel() {
   }, [activeTab, showBanner]);
 
   useEffect(() => {
-    if (authorized) loadItems();
+    if (!authorized) return;
+    // loadItems sets listLoading before its first await; that's the actual
+    // data-sync work this effect exists to do (refetch when the tab or auth
+    // state changes), so it's an intentional exception to set-state-in-effect.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    loadItems();
   }, [authorized, activeTab, loadItems]);
 
   /* ---------------- CREATE / EDIT ---------------- */
