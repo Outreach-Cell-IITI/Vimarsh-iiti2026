@@ -237,14 +237,14 @@ export default function AdminPanel() {
   return (
     <div className="min-h-screen bg-slate-100">
       <header className="bg-white border-b border-slate-200 sticky top-0 z-20">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold text-slate-900">Vimarsh Admin Panel</h1>
-            <p className="text-sm text-slate-500">Manage Events &amp; Institute Colloquium</p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <h1 className="text-base sm:text-xl font-bold text-slate-900 truncate">Vimarsh Admin Panel</h1>
+            <p className="hidden sm:block text-sm text-slate-500">Manage Events &amp; Institute Colloquium</p>
           </div>
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-red-600 transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 text-sm font-medium text-slate-600 hover:text-red-600 transition-colors flex-shrink-0 px-2 py-1.5 sm:px-0 sm:py-0"
           >
             <LogOut className="w-4 h-4" />
             Log Out
@@ -252,7 +252,7 @@ export default function AdminPanel() {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-8">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {banner && (
           <div
             className={`mb-6 px-4 py-3 rounded-lg text-sm border ${
@@ -266,11 +266,11 @@ export default function AdminPanel() {
         )}
 
         {/* Tabs */}
-        <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-          <div className="flex gap-2 bg-white border border-slate-200 rounded-lg p-1">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3 sm:gap-4">
+          <div className="flex gap-1 sm:gap-2 bg-white border border-slate-200 rounded-lg p-1 w-full sm:w-auto">
             <button
               onClick={() => setActiveTab("event")}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition-colors ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap ${
                 activeTab === "event" ? "bg-blue-600 text-white" : "text-slate-600 hover:bg-slate-50"
               }`}
             >
@@ -278,17 +278,18 @@ export default function AdminPanel() {
             </button>
             <button
               onClick={() => setActiveTab("colloquium")}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition-colors ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap ${
                 activeTab === "colloquium" ? "bg-blue-600 text-white" : "text-slate-600 hover:bg-slate-50"
               }`}
             >
-              Institute Colloquium
+              <span className="sm:hidden">Colloquium</span>
+              <span className="hidden sm:inline">Institute Colloquium</span>
             </button>
           </div>
 
           <button
             onClick={openCreateForm}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
+            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 sm:py-2 rounded-lg text-sm font-semibold transition-colors w-full sm:w-auto"
           >
             <Plus className="w-4 h-4" />
             Add {activeTab === "colloquium" ? "Colloquium Talk" : "Event"}
@@ -309,47 +310,50 @@ export default function AdminPanel() {
               return (
                 <div
                   key={item.id}
-                  className="bg-white border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center"
+                  className="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center"
                 >
-                  <div className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-slate-100 border flex items-center justify-center">
-                    {imageUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={imageUrl} alt={item.speaker} className="w-full h-full object-cover" />
-                    ) : (
-                      <span className="text-xs text-slate-400">No image</span>
-                    )}
-                  </div>
+                  <div className="flex gap-3 sm:contents">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-lg overflow-hidden bg-slate-100 border flex items-center justify-center">
+                      {imageUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={imageUrl} alt={item.speaker} className="w-full h-full object-cover" />
+                      ) : (
+                        <span className="text-xs text-slate-400">No image</span>
+                      )}
+                    </div>
 
-                  <div className="flex-grow min-w-0">
-                    <p className="font-semibold text-slate-900 truncate">{item.title}</p>
-                    <p className="text-sm text-slate-500 truncate">{item.speaker}</p>
-                    <div className="flex items-center gap-3 mt-1 flex-wrap">
-                      <span className="text-xs text-blue-600 font-semibold">
-                        {formatDisplayDate(item.date)}
-                      </span>
-                      {item.series && (
-                        <span className="text-xs text-slate-400 uppercase tracking-wide">{item.series}</span>
-                      )}
-                      {item.video && (
-                        <a
-                          href={item.video}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-red-500 hover:underline flex items-center gap-1"
-                        >
-                          Video <ExternalLink className="w-3 h-3" />
-                        </a>
-                      )}
+                    <div className="flex-grow min-w-0">
+                      <p className="font-semibold text-slate-900 truncate">{item.title}</p>
+                      <p className="text-sm text-slate-500 truncate">{item.speaker}</p>
+                      <div className="flex items-center gap-2 sm:gap-3 mt-1 flex-wrap">
+                        <span className="text-xs text-blue-600 font-semibold">
+                          {formatDisplayDate(item.date)}
+                        </span>
+                        {item.series && (
+                          <span className="text-xs text-slate-400 uppercase tracking-wide">{item.series}</span>
+                        )}
+                        {item.video && (
+                          <a
+                            href={item.video}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-red-500 hover:underline flex items-center gap-1"
+                          >
+                            Video <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex gap-2 flex-shrink-0">
+                  <div className="flex gap-2 flex-shrink-0 justify-end sm:justify-start">
                     <button
                       onClick={() => openEditForm(item)}
-                      className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50"
+                      className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 p-2.5 sm:p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50"
                       title="Edit"
                     >
                       <Edit2 className="w-4 h-4" />
+                      <span className="sm:hidden text-xs font-medium">Edit</span>
                     </button>
                     <button
                       onClick={() => {
@@ -358,10 +362,11 @@ export default function AdminPanel() {
                         }
                       }}
                       disabled={deletingId === item.id}
-                      className="p-2 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 disabled:opacity-50"
+                      className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 p-2.5 sm:p-2 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 disabled:opacity-50"
                       title="Delete"
                     >
                       <Trash2 className="w-4 h-4" />
+                      <span className="sm:hidden text-xs font-medium">Delete</span>
                     </button>
                   </div>
                 </div>
