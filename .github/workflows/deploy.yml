@@ -1,0 +1,68 @@
+name: Deploy to IIT CloudPanel Server
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Deploy
+        run: |
+          set -e
+          SITE_PATH="$HOME/htdocs/vimarsh.iiti.ac.in"
+          cd "$SITE_PATH"
+
+          echo "== Recording current commit (for rollback if needed) =="
+          PREV_COMMIT=$(git rev-parse HEAD)
+          echo "$PREV_COMMIT" > /tmp/vimarsh_prev_commit.txt
+
+          echo "== Pulling latest code =="
+          git fetch origin main
+          git reset --hard origin/main
+
+          echo "== Installing dependencies =="
+          npm ci
+
+          echo "== Building (Next.js build) =="
+          npm run build
+
+          echo "== Restarting app via PM2 =="
+          pm2 restart vimarsh
+
+          echo "== Deploy steps finished =="
+          pm2 status
+
+      - name: Health check
+        run: |
+          sleep 5
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.SITE_URL }}")
+          echo "Site responded with status: $STATUS"
+          if [ "$STATUS" -ne 200 ]; then
+            echo "Health check FAILED (status $STATUS)"
+            exit 1
+          fi
+          echo "Health check passed ✅"
+
+      - name: Rollback on failure
+        if: failure()
+        run: |
+          SITE_PATH="$HOME/htdocs/vimarsh.iiti.ac.in"
+          cd "$SITE_PATH"
+          if [ -f /tmp/vimarsh_prev_commit.txt ]; then
+            PREV_COMMIT=$(cat /tmp/vimarsh_prev_commit.txt)
+            echo "Rolling back to $PREV_COMMIT"
+            git reset --hard "$PREV_COMMIT"
+            npm ci
+            npm run build
+            pm2 restart vimarsh
+            echo "Rollback complete, app restarted"
+          else
+            echo "No previous commit recorded, skipping rollback"
+          fi
