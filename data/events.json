@@ -1,0 +1,122 @@
+[
+{
+  "id": 12,
+  "speaker": "Prof. Anil Bhardwaj, FNA, FASc, FNASc, J.C. Bose Fellow, AOGS Fellow Academician, International Academy of Astronautics, Director, PRL",
+  "title": "India going to the Moon",
+  "series": "Institute Public Lecture - VIMARSH",
+  "date": "March 23, 2026",
+  "image": "/ForWebpage/AnilBhardwaj/poster.png",
+  "pdf": "/ForWebpage/AnilBhardwaj/poster.png",
+  "video": "https://youtu.be/WgZV-IE8afw?si=vlKSza9HnG6uXYR1"
+},
+  {
+  "id": 11,
+  "speaker": "Prof. Debasish Ghose, FNAE, FNASc, FNA, Hon. Professor, Department of Aerospace Engineering, Indian Institute of Science, Bangalore",
+  "title": "Collaborative Autonomous Systems",
+  "series": "VIMARSH Institute Public Lecture",
+  "date": "March 16, 2026",
+  "image": "/ForWebpage/D.Ghose/D.Ghose.jpeg",
+  "pdf": "/ForWebpage/D.Ghose/2026-IITIndore-Prof.D.Ghose.pdf",
+  "video": "https://www.youtube.com/watch?v=4MkczTqOSL8"
+},
+  {
+    "id": 10,
+    "speaker": "Prof. Tanusri Saha-Dasgupta, FNA, FASc, FNASc, FTWAS, APS Fellow, J.C. Bose National Fellow, Director, S.N. Bose National Centre for Basic Sciences, Kolkata",
+    "title": "Understanding Earth's Interior by Computation",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "February 2, 2026",
+    "image": "/ForWebpage/T.SahaDasgupta.png",
+    "pdf": "/ForWebpage/earth-interior-computation.pdf",
+    "video": "https://www.youtube.com/watch?v=1gGOitqoAE8&t=4s"
+  },
+  {
+    "id": 9,
+    "speaker": "Dr. Swaminathan Kailas, FNA, FASc, Former Director, Physics Group, BARC, Mumbai, INSA Honorary Scientist & Hon. Professor, UM-DAE Centre for Excellence in Basic Sciences, Mumbai",
+    "title": "Nuclear Science, Technology and Society",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "January 16, 2026",
+    "image": "/ForWebpage/S.Kailas/S.Kailas.png",
+    "pdf": "/ForWebpage/S.Kailas/IIT Indore 2026 SKailas.pdf",
+    "video": "https://youtu.be/K4PQWwWkc2g?si=Jj_4glfp3G4795M6"
+  },
+  {
+    "id": 8,
+    "speaker": "Professor H.C. Verma, FNASc (Padma Shri Awardee)",
+    "title": "My Educational Experiments",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "March 28, 2025",
+    "image": "/ForWebpage/H.C.Verma/HCV-copy.png",
+    "pdf": "/ForWebpage/H.C.Verma/HCV-copy.pdf",
+    "video": "https://youtu.be/FlxMUqXpghQ?si=hicWyuhtloBCZXiD"
+  },
+  {
+    "id": 7,
+    "speaker": "Prof. G. D. Yadav, FNA, FASc, FNASc, FTWAS, FNAE, Emeritus Professor of Eminence, ICT Mumbai (Padma Shri Awardee)",
+    "title": "Unlocking Success: Join us for an insightful Lecture!",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "March 18, 2025",
+    "image": "/ForWebpage/GD.Yadav/image.jpeg",
+    "pdf": "/ForWebpage/GD.Yadav/image.jpeg",
+    "video": "https://www.youtube.com/@OutreachCell-iiti"
+  },
+  {
+    "id": 6,
+    "speaker": "Dr. Rajesh S. Gokhale, Secretary, Department of Biotechnology (DBT), Government of India",
+    "title": "Engineering Bharat's Bio-Vision",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "February 17, 2025",
+    "image": "/ForWebpage/RajeshGokhale/Flyer_Vimarsh_17022025.png",
+    "pdf": "/ForWebpage/RajeshGokhale/iit_indore.pdf",
+    "video": "https://www.youtube.com/@OutreachCell-iiti"
+  },
+  {
+    "id": 5,
+    "speaker": "Dr. Kiran Seth, Founder of SPIC MCAY (Padma Shri Awardee)",
+    "title": "Save the Tiger and maybe the Rudra Veena: Indian Knowledge System in Modern Contexts.",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "January 16, 2025",
+    "image": "/ForWebpage/spicmacay.png",
+    "pdf": "/ForWebpage/spicmacay.png",
+    "video": "https://www.youtube.com/@OutreachCell-iiti"
+  },
+  {
+    "id": 4,
+    "speaker": "Prof. Amit Roy, FNASc, Former Director, IUAC, New Delhi",
+    "title": "Nuclear Technologies for Society",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "November 6, 2024",
+    "image": "/ForWebpage/AmitRoy/AmitRoy-Flyer.png",
+    "pdf": "/ForWebpage/AmitRoy/l1pdf.pdf",
+    "video": "https://www.youtube.com/@OutreachCell-iiti"
+  },
+  {
+    "id": 3,
+    "speaker": "Prof. Jemmis Eluvathingal Devassy, FNA, FASc, FNASc, FTWAS, IISc Bangalore (Padma Shri Awardee)",
+    "title": "Inquisitive Minds and Innovative Questions",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "August 29, 2024",
+    "image": "/ForWebpage/Jemmis/Lecture_poster.png",
+    "pdf": "/ForWebpage/Jemmis/Lecture_ppt.docx",
+    "video": "https://www.youtube.com/@OutreachCell-iiti"
+  },
+  {
+    "id": 2,
+    "speaker": "Prof. Indranil Manna, FNAE, FNA, FASc, FNASc, FTWAS, Vice Chancellor, BIT Mesra",
+    "title": "Science–Engineering–Technology Synergy Needed for Technological Self-Reliance",
+    "series": "Institute Public Lecture - VIMARSH",
+    "date": "March 20, 2023",
+    "image": "/ForWebpage/I.Manna/Lecture_poster.jpg",
+    "pdf": "/ForWebpage/I.Manna/Lecture_notes.pdf",
+    "video": "https://www.youtube.com/@OutreachCell-iiti"
+  },
+  {
+    "id": 1,
+    "speaker": "Prof. Subhasis Chaudhuri, FNAE, FNA, FASc, FNASc, Director, IIT Bombay",
+    "title": "Students' interaction with an eminent researcher",
+    "series": "Institute Colloquium",
+    "date": "February 3, 2023",
+    "image": "/ForWebpage/IITB/image.png",
+    "pdf": "Prof-SubhasisChaudhuri.pdf",
+    "video": "https://www.youtube.com/@OutreachCell-iiti"
+  }
+]

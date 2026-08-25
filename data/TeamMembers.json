@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Kavyansh Raj Singh",
+    "role": "Outreach",
+    "email": "che240008014@iiti.ac.in",
+    "linkedin": "https://www.linkedin.com/in/kavyanshsingh/",
+    "instagram": "https://www.instagram.com/real_kavyansh/",
+    "image": "/pics/Team/Kavyansh.jpeg"
+  },
+  {
+    "name": "Anand Vivek",
+    "role": "Web Dev",
+    "email": "me240003006@iiti.ac.in",
+    "linkedin": "https://www.linkedin.com/in/anandvivek1223/",
+    "instagram": "https://www.instagram.com/anandvivek1223/",
+    "image": "/pics/Team/Anand.jpeg"
+  },
+  {
+    "name": "Shruti Turare",
+    "role": "Creatives",
+    "email": "che240008029@iiti.ac.in",
+    "linkedin": "https://in.linkedin.com/in/shruti-turare-a5184a286",
+    "instagram": "https://www.instagram.com/3.shrutea/",
+    "image": "/pics/Team/Shruti.jpg"
+  },
+  {
+    "name": "Samarth Dhanuka",
+    "role": "Social Media",
+    "email": "che240008011@iiti.ac.in",
+    "linkedin": "https://linkedin.com/in/dhanuka-samarth",
+    "instagram": "https://www.instagram.com/chat_with_sam_07",
+    "image": "/pics/Team/Samarth.jpg"
+  },
+  {
+    "name": "Abhishek Nigam",
+    "role": "OPNL",
+    "email": "che240008001@iiti.ac.in",
+    "linkedin": "https://www.linkedin.com/in/abhisheknigam8001",
+    "instagram": "https://www.instagram.com/abhisheknigam1251",
+    "image": "/pics/Team/Abhishek.webp"
+  },
+  {
+    "name": "Jayshil Mendhe",
+    "role": "Outreach",
+    "email": "che240008013@iiti.ac.in",
+    "linkedin": "https://www.linkedin.com/in/jayshilmendhe/",
+    "instagram": "https://www.instagram.com/jayshilmendhe/",
+    "image": "/pics/Team/jayshil.JPG"
+  },
+  {
+    "name": "Rishabh Tiwari",
+    "role": "Outreach",
+    "emails": "msc2403151019@iiti.ac.in",
+    "linkedin": "https://www.linkedin.com/in/rishabh-tiwari-6e9k4r2f0/",
+    "instagram": "https://www.instagram.com/rishabh_tiwari02",
+    "image": "/pics/Team/Rishabh.jpeg"
+  },
+  {
+    "name": "Arpita Chhimpa",
+    "role": "Outreach",
+    "emails": "arpitachhimpa@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/arpita-chhimpa-200170358",
+    "instagram": "https://www.instagram.com/arpita_chhimpa",
+    "image": "/pics/Team/Arpita.jpeg"
+  }
+]

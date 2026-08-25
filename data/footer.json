@@ -1,0 +1,63 @@
+{
+  "identity": {
+    "title": "Outreach Cell",
+    "subtitle": "Institute Seminars and Outreach Committee",
+    "institute": "Indian Institute of Technology Indore"
+  },
+  "contact": {
+    "email": "outreachcell@iiti.ac.in",
+    "website": "https://vimarsh.iiti.ac.in",
+    "youtube": "https://www.youtube.com/@OutreachCell-iiti"
+  },
+  "faculty": [
+    {
+      "name": "Prof. Raghunath Sahoo",
+      "linkedin": "https://www.linkedin.com/in/raghunath-sahoo-0464971a4/"
+    },
+    {
+      "name": "Dr. Priyansh Singh",
+      "linkedin": "https://www.linkedin.com/in/catchpriyansh/"
+    },
+    {
+      "name": "Dr. Kalandi C Pradhan",
+      "linkedin": "https://www.linkedin.com/in/dr-kalandi-charan-pradhan-570ba3203/"
+    },
+    {
+      "name": "Mr. Tanmay Harsh (AR Administration)",
+      "linkedin": "https://www.linkedin.com/in/tanmay-vaishnav-9a180673/"
+    }
+  ],
+  "students": [
+    {
+      "name": "Kavyansh Raj Singh",
+      "linkedin": "https://www.linkedin.com/in/kavyanshsingh/"
+    },
+    {
+      "name": "Anand Vivek",
+      "linkedin": "https://www.linkedin.com/in/anandvivek1223/"
+    },
+    {
+      "name": "Shruti Turare",
+      "linkedin": "https://in.linkedin.com/in/shruti-turare-a5184a286"
+    },
+    {
+      "name": "Samarth Dhanuka",
+      "linkedin": "https://linkedin.com/in/dhanuka-samarth"
+    },
+    {
+      "name": "Abhishek Nigam",
+      "linkedin": "https://www.linkedin.com/in/abhisheknigam8001"
+    },
+    {
+      "name": "Jayshil Mendhe",
+      "linkedin": "https://www.linkedin.com/in/jayshilmendhe"
+    },
+    {
+      "name": "Rishabh Tiwari",
+      "linkedin": "https://www.linkedin.com/in/rishabh-tiwari-6e9k4r2f0/"
+    },{
+        "name": "Arpita Chhimpa",
+        "linkedin": "https://www.linkedin.com/in/arpita-chhimpa-200170358/"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Prof. Raghunath Sahoo",
+    "role": "Convenor",
+    "dept": "Institute Chair Professor, Department of Physics",
+    "email": "raghunath@iiti.ac.in",
+    "image": "/pics/People/13.jpeg",
+    "linkedin": "https://www.linkedin.com/in/raghunath-sahoo-0464971a4/?originalSubdomain=in",
+    "website": "https://people.iiti.ac.in/~raghunath/"
+  },
+  {
+    "name": "Dr. Priyansh Singh",
+    "role": "Member",
+    "dept": "Assistant Professor, Department of Civil Engineering",
+    "email": "priyansh@iiti.ac.in",
+    "image": "/pics/People/10.png",
+    "linkedin": "https://www.linkedin.com/in/catchpriyansh/?originalSubdomain=in",
+    "website": "https://priyanshsingh.com"
+  },
+  {
+    "name": "Dr. Kalandi C Pradhan",
+    "role": "Member",
+    "dept": "Assistant Professor, School of Humanities and Social Sciences",
+    "email": "kcpradhan@iiti.ac.in",
+    "image": "/pics/People/11.png",
+    "linkedin": "https://www.linkedin.com/in/dr-kalandi-charan-pradhan-570ba3203/?originalSubdomain=in",
+    "website": "https://iiti.irins.org/profile/165451"
+  },
+  {
+    "name": "Mr. Tanmay Harsh   (AR Administration)",
+    "role": "Member",
+    "dept": "Outreach Office ",
+    "email": "tanmay@iiti.ac.in",
+    "image": "/pics/People/12.png",
+    "linkedin": "https://www.linkedin.com/in/tanmay-vaishnav-9a180673/?originalSubdomain=in",
+    "website": "/"
+  }
+]
