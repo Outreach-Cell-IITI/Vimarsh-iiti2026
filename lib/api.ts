@@ -1,6 +1,6 @@
 // Shared client-side helpers for talking to the Vimarsh site's own API
-// routes (Events + Institute Colloquium, both admin-managed via
-// PostgreSQL). Everything is same-origin now - no separate backend port.
+// routes (Events + Institute Colloquium, both admin-managed via MySQL).
+// Everything is same-origin now - no separate backend port.
 
 export type ItemType = "event" | "colloquium";
 

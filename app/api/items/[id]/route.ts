@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import type { RowDataPacket } from "mysql2/promise";
 import { pool, ensureSchema } from "@/lib/db";
 import { checkAdminAuth } from "@/lib/adminAuth";
 import { saveUploadedFile, deleteUploadedFile } from "@/lib/uploads";
 
 const VALID_TYPES = ["event", "colloquium"];
 
-type ColloquiumRow = {
+interface ColloquiumRow extends RowDataPacket {
   id: number;
   type: string;
   speaker: string;
@@ -15,7 +16,7 @@ type ColloquiumRow = {
   image_url: string | null;
   pdf_url: string | null;
   video_url: string | null;
-};
+}
 
 function toClientItem(row: ColloquiumRow) {
   return {
@@ -31,17 +32,29 @@ function toClientItem(row: ColloquiumRow) {
   };
 }
 
+function isValidId(id: string): boolean {
+  return /^\d+$/.test(id);
+}
+
 type Params = { params: Promise<{ id: string }> };
 
 export async function GET(_req: NextRequest, { params }: Params) {
   await ensureSchema();
   const { id } = await params;
+
+  if (!isValidId(id)) {
+    return NextResponse.json({ success: false, message: "Invalid item ID" }, { status: 400 });
+  }
+
   try {
-    const result = await pool.query("SELECT * FROM colloquium_events WHERE id = $1", [id]);
-    if (result.rows.length === 0) {
+    const [rows] = await pool.query<ColloquiumRow[]>(
+      "SELECT * FROM colloquium_events WHERE id = ?",
+      [id]
+    );
+    if (rows.length === 0) {
       return NextResponse.json({ success: false, message: "Item not found" }, { status: 404 });
     }
-    return NextResponse.json({ success: true, item: toClientItem(result.rows[0]) });
+    return NextResponse.json({ success: true, item: toClientItem(rows[0]) });
   } catch {
     return NextResponse.json({ success: false, message: "Invalid item ID" }, { status: 400 });
   }
@@ -54,12 +67,19 @@ export async function PUT(req: NextRequest, { params }: Params) {
 
   const { id } = await params;
 
+  if (!isValidId(id)) {
+    return NextResponse.json({ success: false, message: "Invalid item ID" }, { status: 400 });
+  }
+
   try {
-    const existing = await pool.query("SELECT * FROM colloquium_events WHERE id = $1", [id]);
-    if (existing.rows.length === 0) {
+    const [existingRows] = await pool.query<ColloquiumRow[]>(
+      "SELECT * FROM colloquium_events WHERE id = ?",
+      [id]
+    );
+    if (existingRows.length === 0) {
       return NextResponse.json({ success: false, message: "Item not found" }, { status: 404 });
     }
-    const current: ColloquiumRow = existing.rows[0];
+    const current = existingRows[0];
 
     const formData = await req.formData();
     const type = formData.get("type") as string | null;
@@ -98,12 +118,11 @@ export async function PUT(req: NextRequest, { params }: Params) {
       pdfUrl = "";
     }
 
-    const result = await pool.query(
+    await pool.query(
       `UPDATE colloquium_events
-       SET type = $1, speaker = $2, title = $3, series = $4, event_date = $5,
-           image_url = $6, pdf_url = $7, video_url = $8, updated_at = NOW()
-       WHERE id = $9
-       RETURNING *`,
+       SET type = ?, speaker = ?, title = ?, series = ?, event_date = ?,
+           image_url = ?, pdf_url = ?, video_url = ?, updated_at = CURRENT_TIMESTAMP
+       WHERE id = ?`,
       [
         type || current.type,
         speaker ?? current.speaker,
@@ -117,7 +136,12 @@ export async function PUT(req: NextRequest, { params }: Params) {
       ]
     );
 
-    return NextResponse.json({ success: true, item: toClientItem(result.rows[0]) });
+    const [rows] = await pool.query<ColloquiumRow[]>(
+      "SELECT * FROM colloquium_events WHERE id = ?",
+      [id]
+    );
+
+    return NextResponse.json({ success: true, item: toClientItem(rows[0]) });
   } catch (err) {
     console.error("Update item error:", err);
     return NextResponse.json(
@@ -134,14 +158,21 @@ export async function DELETE(req: NextRequest, { params }: Params) {
 
   const { id } = await params;
 
+  if (!isValidId(id)) {
+    return NextResponse.json({ success: false, message: "Invalid item ID" }, { status: 400 });
+  }
+
   try {
-    const existing = await pool.query("SELECT * FROM colloquium_events WHERE id = $1", [id]);
-    if (existing.rows.length === 0) {
+    const [existingRows] = await pool.query<ColloquiumRow[]>(
+      "SELECT * FROM colloquium_events WHERE id = ?",
+      [id]
+    );
+    if (existingRows.length === 0) {
       return NextResponse.json({ success: false, message: "Item not found" }, { status: 404 });
     }
-    const current: ColloquiumRow = existing.rows[0];
+    const current = existingRows[0];
 
-    await pool.query("DELETE FROM colloquium_events WHERE id = $1", [id]);
+    await pool.query("DELETE FROM colloquium_events WHERE id = ?", [id]);
 
     deleteUploadedFile(current.image_url || "");
     deleteUploadedFile(current.pdf_url || "");

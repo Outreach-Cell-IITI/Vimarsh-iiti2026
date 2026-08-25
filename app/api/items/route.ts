@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import type { RowDataPacket, ResultSetHeader } from "mysql2/promise";
 import { pool, ensureSchema } from "@/lib/db";
 import { checkAdminAuth } from "@/lib/adminAuth";
 import { saveUploadedFile } from "@/lib/uploads";
 
 const VALID_TYPES = ["event", "colloquium"];
 
-type ColloquiumRow = {
+interface ColloquiumRow extends RowDataPacket {
   id: number;
   type: string;
   speaker: string;
@@ -15,7 +16,7 @@ type ColloquiumRow = {
   image_url: string | null;
   pdf_url: string | null;
   video_url: string | null;
-};
+}
 
 function toClientItem(row: ColloquiumRow) {
   return {
@@ -24,7 +25,7 @@ function toClientItem(row: ColloquiumRow) {
     speaker: row.speaker,
     title: row.title,
     series: row.series || "",
-    date: row.event_date, // ISO date string; frontend formats for display
+    date: row.event_date, 
     image: row.image_url || "",
     pdf: row.pdf_url || "",
     video: row.video_url || "",
@@ -43,14 +44,16 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const result = type
-      ? await pool.query(
-          "SELECT * FROM colloquium_events WHERE type = $1 ORDER BY event_date DESC, id DESC",
+    const [rows] = type
+      ? await pool.query<ColloquiumRow[]>(
+          "SELECT * FROM colloquium_events WHERE type = ? ORDER BY event_date DESC, id DESC",
           [type]
         )
-      : await pool.query("SELECT * FROM colloquium_events ORDER BY event_date DESC, id DESC");
+      : await pool.query<ColloquiumRow[]>(
+          "SELECT * FROM colloquium_events ORDER BY event_date DESC, id DESC"
+        );
 
-    return NextResponse.json({ success: true, items: result.rows.map(toClientItem) });
+    return NextResponse.json({ success: true, items: rows.map(toClientItem) });
   } catch (err) {
     console.error("List items error:", err);
     return NextResponse.json(
@@ -100,14 +103,18 @@ export async function POST(req: NextRequest) {
       pdfUrl = await saveUploadedFile(pdfFile, "pdf");
     }
 
-    const result = await pool.query(
+    const [result] = await pool.query<ResultSetHeader>(
       `INSERT INTO colloquium_events (type, speaker, title, series, event_date, image_url, pdf_url, video_url)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-       RETURNING *`,
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [type, speaker, title, series, date, imageUrl, pdfUrl, video]
     );
 
-    return NextResponse.json({ success: true, item: toClientItem(result.rows[0]) }, { status: 201 });
+    const [rows] = await pool.query<ColloquiumRow[]>(
+      "SELECT * FROM colloquium_events WHERE id = ?",
+      [result.insertId]
+    );
+
+    return NextResponse.json({ success: true, item: toClientItem(rows[0]) }, { status: 201 });
   } catch (err) {
     console.error("Create item error:", err);
     return NextResponse.json(
